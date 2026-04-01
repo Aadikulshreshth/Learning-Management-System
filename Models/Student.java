@@ -13,8 +13,8 @@ public class Student extends User{
     this.courseEnrolled=courseEnrolled;
   }
 
-  @override;
-  public void ViewDashboard(){
+  @override
+  public void viewDashboard(){
     System.out.println("Student Dashboard");
   }
 }
