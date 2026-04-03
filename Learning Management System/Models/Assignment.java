@@ -14,6 +14,10 @@ public class Assignment {
         this.maxMarks=maxMarks;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     public String getAssignmentID() {
         return assignmentID;
     }
