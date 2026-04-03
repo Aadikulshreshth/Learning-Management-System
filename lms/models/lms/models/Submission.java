@@ -1,3 +1,5 @@
+package lms.models;
+
 public class Submission {
     private String submissionId;
     private Student student;

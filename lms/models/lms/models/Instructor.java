@@ -1,3 +1,5 @@
+package lms.models;
+
 public class Instructor extends User {
     private String department;
     public Instructor(String userId, String name, String email, String department) {

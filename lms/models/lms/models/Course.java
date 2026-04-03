@@ -1,3 +1,5 @@
+package lms.models;
+
 import java.util.ArrayList;
 
 public  class Course {
