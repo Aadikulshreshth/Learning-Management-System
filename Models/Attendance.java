@@ -1,5 +1,3 @@
-package lms.models;
-
 public class Attendance {
     private Student student;
     private Course course;
