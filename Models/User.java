@@ -1,5 +1,3 @@
-package lms.models;
-
 public abstract class User{
     protected String UserID;
     protected String name;

@@ -1,5 +1,3 @@
-package lms.models;
-
 public class Assignment {
     private String assignmentID;
     private String title;
