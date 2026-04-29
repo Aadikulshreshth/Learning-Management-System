@@ -1,39 +1,21 @@
-import java.util.ArrayList;
+imimport java.util.ArrayList;
 
-public  class Course {
+public class Course {
+
     private String courseId;
     private String courseName;
-    private Instructor instructor;
+    private ArrayList<Assignment> assignments = new ArrayList<>();
 
-    private ArrayList<Student> enrolledStudents;
-    private ArrayList<Assignment> assignments;
-
-    //Constructor
-    public Course(String courseId, String courseName, Instructor instructor){
-        this.courseId=courseId;
-        this.courseName=courseName;
-        this.instructor=instructor;
-        this.enrolledStudents= new ArrayList<>();
-        this.assignments=new ArrayList<>();
+    public Course(String courseId, String courseName) {
+        this.courseId = courseId;
+        this.courseName = courseName;
     }
 
-    //Add Students
-    public void enrollStudent(Student student) {
-        enrolledStudents.add(student);
-    }
+    public String getCourseId() { return courseId; }
+    public String getCourseName() { return courseName; }
 
-    // Add Assignment
-    public void addAssignment(Assignment assignment) {
-        assignments.add(assignment);
-    }
-
-    // Getters
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public ArrayList<Student> getEnrolledStudents() {
-        return enrolledStudents;
+    public void addAssignment(Assignment a) {
+        assignments.add(a);
     }
 
     public ArrayList<Assignment> getAssignments() {

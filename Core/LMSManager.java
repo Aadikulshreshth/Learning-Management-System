@@ -1,115 +1,76 @@
 import java.util.ArrayList;
-
 public class LMSManager {
 
-    private ArrayList<Student> students;
-    private ArrayList<Course> courses;
-    private ArrayList<Submission> submissions;
+    private ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Instructor> instructors = new ArrayList<>();
+    private ArrayList<Course> courses = new ArrayList<>();
 
-    // Constructor
-    public LMSManager() {
-        students = new ArrayList<>();
-        courses = new ArrayList<>();
-        submissions = new ArrayList<>();
+    // ---------------- ADD USERS ----------------
+
+    public void addStudent(Student s) {
+        students.add(s);
     }
 
-    // ------------------ STUDENT ------------------
-
-    public void addStudent(Student student) {
-        students.add(student);
-        System.out.println("Student added successfully.");
+    public void addInstructor(Instructor i) {
+        instructors.add(i);
     }
 
-    public Student findStudent(String userId) throws UserNotFoundException {
+    public void addCourse(Course c) {
+        courses.add(c);
+    }
+
+    // ---------------- LOGIN ----------------
+
+    public User login(String id) {
         for (Student s : students) {
-            if (s.getUserId().equals(userId)) {
-                return s;
-            }
+            if (s.getUserId().equals(id)) return s;
         }
-        throw new UserNotFoundException("Student not found");
+        for (Instructor i : instructors) {
+            if (i.getUserId().equals(id)) return i;
+        }
+        return null;
     }
 
-    // ------------------ COURSE ------------------
+    // ---------------- FIND ----------------
 
-    public void addCourse(Course course) {
-        courses.add(course);
-        System.out.println("Course added successfully.");
-    }
-
-    public Course findCourse(String courseId) throws CourseNotFoundException {
+    public Course findCourse(String id) {
         for (Course c : courses) {
-            if (c.getCourseId().equals(courseId)) {
-                return c;
-            }
+            if (c.getCourseId().equals(id)) return c;
         }
-        throw new CourseNotFoundException("Course not found");
+        return null;
     }
 
-    // ------------------ ENROLLMENT ------------------
+    // ---------------- ACTIONS ----------------
 
-    public void enrollStudent(String userId, String courseId)
-            throws UserNotFoundException, CourseNotFoundException {
-
-        Student student = findStudent(userId);
-        Course course = findCourse(courseId);
-
-        course.addStudent(student);
-        System.out.println("Student enrolled successfully.");
-    }
-
-    // ------------------ ASSIGNMENT ------------------
-
-    public void addAssignment(String courseId, Assignment assignment)
-            throws CourseNotFoundException {
-
-        Course course = findCourse(courseId);
-        course.addAssignment(assignment);
-
-        System.out.println("Assignment added to course.");
-    }
-
-    // ------------------ SUBMISSION ------------------
-
-    public void submitAssignment(String userId, String courseId, Assignment assignment, String content)
-            throws UserNotFoundException, CourseNotFoundException {
-
-        Student student = findStudent(userId);
-        Course course = findCourse(courseId);
-
-        Submission submission = new Submission("SUB" + (submissions.size() + 1),
-                student, assignment, content);
-
-        submissions.add(submission);
-        assignment.addSubmission(submission);
-
-        System.out.println("Assignment submitted successfully.");
-    }
-
-    // ------------------ EVALUATION ------------------
-
-    public void evaluateSubmission(Submission submission, int marks) {
-        submission.assignMarks(marks);
-        System.out.println("Submission evaluated.");
-    }
-
-    // ------------------ DISPLAY ------------------
-
-    public void displayStudents() {
-        for (Student s : students) {
-            System.out.println(s.getName());
+    public void addAssignment(User user, String courseId, Assignment a) {
+        if (!user.getRole().equals("instructor")) {
+            System.out.println("Only instructor allowed");
+            return;
+        }
+        Course c = findCourse(courseId);
+        if (c != null) {
+            c.addAssignment(a);
+            System.out.println("Assignment added");
         }
     }
 
-    public void displayCourses() {
-        for (Course c : courses) {
-            System.out.println(c.getCourseName());
+    public void submitAssignment(User user, Assignment a, String content) {
+        if (!user.getRole().equals("student")) {
+            System.out.println("Only student allowed");
+            return;
         }
+
+        Submission s = new Submission((Student) user, a, content);
+        a.addSubmission(s);
+        System.out.println("Submitted");
     }
 
-    public void displaySubmissions() {
-        for (Submission s : submissions) {
-            s.displaySubmission();
-            System.out.println("-------------------");
+    public void grade(User user, Submission s, int marks) {
+        if (!user.getRole().equals("instructor")) {
+            System.out.println("Only instructor allowed");
+            return;
         }
+        s.assignMarks(marks);
+        System.out.println("Graded");
     }
 }
