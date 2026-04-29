@@ -1,5 +1,4 @@
-package lms.grading;
-import lms.Models.*;
+package grading;
 
 public class AssignmentGrading implements Evaluator {
 

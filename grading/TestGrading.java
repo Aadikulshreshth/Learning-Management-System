@@ -1,6 +1,4 @@
-package lms.grading;
-
-import lms.grading.Evaluator;
+package grading;
 
 public class TestGrading implements Evaluator {
 
