@@ -1,9 +1,9 @@
 package grading;
-
+import Models.*;
 public class TestGrading implements Evaluator {
 
     @Override
-    public double evaluate(lms.models.Submission submission, lms.models.Attendance attendance) {
+    public double evaluate(Submission submission, Attendance attendance) {
         return submission.getMarks();
     }
 }
