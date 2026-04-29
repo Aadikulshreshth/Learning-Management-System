@@ -1,24 +1,24 @@
+import java.util.ArrayList;
+
 public class Assignment {
-    private String assignmentID;
+
+    private String assignmentId;
     private String title;
-    private String description;
-    private String deadline;
-    private int maxMarks;
+    private ArrayList<Submission> submissions = new ArrayList<>();
 
-
-    public  Assignment(String assignmentID, String title, String description, String deadline, int maxMarks){
-        this.assignmentID=assignmentID;
-        this.title=title;
-        this.description=description;
-        this.deadline=deadline;
-        this.maxMarks=maxMarks;
+    public Assignment(String assignmentId, String title) {
+        this.assignmentId = assignmentId;
+        this.title = title;
     }
 
-    public String getTitle() {
-        return title;
+    public String getAssignmentId() { return assignmentId; }
+    public String getTitle() { return title; }
+
+    public void addSubmission(Submission s) {
+        submissions.add(s);
     }
 
-    public String getAssignmentID() {
-        return assignmentID;
+    public ArrayList<Submission> getSubmissions() {
+        return submissions;
     }
 }
