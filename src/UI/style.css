@@ -1,0 +1,80 @@
+/* --- GLOBAL --- */
+     .root {
+         -fx-background-color: #F8FAFC; /* Clean, modern slate-grey */
+         -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+     }
+
+     /* --- NAVIGATION BAR --- */
+     .nav-bar {
+         -fx-background-color: #FFFFFF;
+         -fx-padding: 15 30;
+         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 2); /* Bottom shadow */
+     }
+
+     .nav-link {
+         -fx-background-color: transparent;
+         -fx-text-fill: #64748B;
+         -fx-font-weight: bold;
+         -fx-font-size: 14px;
+         -fx-cursor: hand;
+     }
+     .nav-link:hover { -fx-text-fill: #0F172A; }
+     .nav-link-active { -fx-text-fill: #4F46E5; } /* Vibrant Indigo */
+
+     /* --- INPUTS & DROPDOWNS --- */
+     .login-input, .combo-box {
+         -fx-background-color: #FFFFFF;
+         -fx-border-color: #CBD5E1;
+         -fx-border-radius: 6;
+         -fx-background-radius: 6;
+         -fx-padding: 10;
+         -fx-font-size: 14px;
+     }
+     .combo-box .list-cell {
+         -fx-background-color: white;
+         -fx-text-fill: #333333;
+     }
+
+     /* --- BUTTONS --- */
+     .login-btn {
+         -fx-background-color: #4F46E5; /* Deep Indigo */
+         -fx-text-fill: white;
+         -fx-font-weight: bold;
+         -fx-font-size: 15px;
+         -fx-padding: 10 20;
+         -fx-background-radius: 6;
+         -fx-cursor: hand;
+     }
+     .login-btn:hover { -fx-background-color: #4338CA; }
+
+     /* Instructor Attendance Buttons */
+     .btn-present {
+         -fx-background-color: #10B981; /* Emerald Green */
+         -fx-text-fill: white;
+         -fx-font-weight: bold;
+         -fx-background-radius: 6;
+         -fx-cursor: hand;
+     }
+     .btn-present:hover { -fx-background-color: #059669; }
+
+     .btn-absent {
+         -fx-background-color: #EF4444; /* Rose Red */
+         -fx-text-fill: white;
+         -fx-font-weight: bold;
+         -fx-background-radius: 6;
+         -fx-cursor: hand;
+     }
+     .btn-absent:hover { -fx-background-color: #DC2626; }
+
+     /* --- CARDS --- */
+     .card {
+         -fx-background-color: #FFFFFF;
+         -fx-background-radius: 12;
+         -fx-border-color: transparent;
+         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 15, 0, 0, 4);
+     }
+     .card-title {
+         -fx-text-fill: #0F172A;
+         -fx-font-size: 18px;
+         -fx-font-weight: bold;
+     }
